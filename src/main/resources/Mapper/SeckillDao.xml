@@ -5,11 +5,7 @@
 <mapper namespace="com.juststand.seckill.dao.SeckillDao">
 	
 	<update id="reduceNumber">
-		UPDATE
-			seckill
-		SET
-			number = number -1 
-		WHERE seckill_id = #{seckillId} AND start_time <![CDATA[<=]]> #{killTime} AND end_time >= #{killTime} and number > 0
+		UPDATE seckill SET number = number-1 WHERE seckill_id = #{seckillId} AND start_time <![CDATA[<=]]> #{killTime} AND end_time >= #{killTime} AND number > 0
 	</update>
 	
 	<select id="getById" resultType="Seckill" parameterType="long">
@@ -17,6 +13,6 @@
 	</select>
 	
 	<select id="getAll" resultType="Seckill">
-		SELECT seckill_id , name , number , start_time , end_time , creatt_time FROM seckill ORDER BY create_time DESC LIMIT #{offset},#{limit}
+		SELECT seckill_id , name , number , start_time , end_time , create_time FROM seckill ORDER BY create_time DESC LIMIT #{offset},#{limit}
 	</select>
 </mapper>

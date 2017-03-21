@@ -59,7 +59,7 @@ public class SuccessKilled {
 	public String toString() {
 		return "SuccessKilled [seckilled=" + seckilled + ", userPhone="
 				+ userPhone + ", state=" + state + ", createTime=" + createTime
-				+ "]";
+				+ ", seckill=" + seckill + "]";
 	}
 	
 }

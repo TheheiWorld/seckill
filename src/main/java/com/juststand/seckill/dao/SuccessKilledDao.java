@@ -1,5 +1,7 @@
 package com.juststand.seckill.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.juststand.seckill.model.SuccessKilled;
 
 /**
@@ -13,11 +15,11 @@ public interface SuccessKilledDao {
 	 * @param userPhone
 	 * @return
 	 */
-	int saveSuccessKilled (long seckillId ,long userPhone);
+	int saveSuccessKilled (@Param("seckillId")long seckillId ,@Param("userPhone")long userPhone);
 	/**
 	 * 根据商品ID查询秒杀成功的，并显示秒杀商品
 	 * @param seckillId
 	 * @return
 	 */
-	SuccessKilled getByIdWithSeckill (long seckillId);
+	SuccessKilled getByIdWithSeckill (@Param("seckillId")long seckillId ,@Param("userPhone")long userPhone);
 }

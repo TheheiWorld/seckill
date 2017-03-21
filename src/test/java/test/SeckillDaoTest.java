@@ -1,5 +1,8 @@
 package test;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -23,9 +26,24 @@ public class SeckillDaoTest {
 	private SeckillDao seckillDao;
 	
 	@Test
-	public void testTeduceNumber() {
+	public void testReduceNumber() {
+		long seckillId = 1000;
+		int number = seckillDao.reduceNumber(seckillId, new Date());
+		System.out.println(number);
+	}
+	
+	@Test
+	public void testGetById (){
 		long seckillId = 1000;
 		Seckill seckill = seckillDao.getById(seckillId);
 		System.out.println(seckill);
+	}
+	
+	@Test
+	public void getAll (){
+		List<Seckill> list = seckillDao.getAll(0, 5);
+		for (Seckill seckill : list) {
+			System.out.println(seckill);
+		}
 	}
 }

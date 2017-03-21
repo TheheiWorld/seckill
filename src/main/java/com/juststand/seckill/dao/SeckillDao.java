@@ -3,6 +3,8 @@ package com.juststand.seckill.dao;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.juststand.seckill.model.Seckill;
 
 /**
@@ -11,12 +13,13 @@ import com.juststand.seckill.model.Seckill;
 public interface SeckillDao {
 	
 	/**
-	 * 减库存
+	 * 减库存 
+	 * 注解参数的目的是java没有保存形参的记录
 	 * @param seckillId
 	 * @param killTime
 	 * @return
 	 */
-	int reduceNumber (long seckillId ,Date killTime);
+	int reduceNumber (@Param("seckillId") long seckillId ,@Param("killTime")Date killTime);
 	
 	/**
 	 * 通过seckillId 查找
@@ -31,6 +34,6 @@ public interface SeckillDao {
 	 * @param limit
 	 * @return
 	 */
-	List<Seckill> getAll (int offset , int limit);
+	List<Seckill> getAll (@Param("offset")int offset , @Param("limit")int limit);
 
 }
