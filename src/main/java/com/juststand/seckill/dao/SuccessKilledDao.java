@@ -1,7 +1,6 @@
 package com.juststand.seckill.dao;
 
 import org.apache.ibatis.annotations.Param;
-
 import com.juststand.seckill.model.SuccessKilled;
 
 /**

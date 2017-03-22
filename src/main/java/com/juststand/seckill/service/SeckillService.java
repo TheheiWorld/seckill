@@ -19,20 +19,20 @@ public interface SeckillService {
 	 * 查询所有的秒杀商品
 	 * @return
 	 */
-	List<Seckill> getSeckills ();
+	public List<Seckill> getSeckills ();
 	
 	/**
 	 * 查询单个秒杀
 	 * @param seckillId
 	 * @return
 	 */
-	Seckill getById (long seckillId);
+	public Seckill getById (long seckillId);
 	
 	/**
 	 * 秒杀开启时输出秒杀接口地址，否则输出系统时间和秒杀时间
 	 * @param seckillId
 	 */
-	Exposer exportSeckillUrl (long seckillId);
+	public Exposer exportSeckillUrl (long seckillId);
 	
 	/**
 	 * 执行秒杀
@@ -40,6 +40,6 @@ public interface SeckillService {
 	 * @param userPhone
 	 * @param md5 用户请求传递过来的
 	 */
-	SeckillExecution executeSeckill (long seckillId ,long userPhone ,String md5)
+	public SeckillExecution executeSeckill (long seckillId ,long userPhone ,String md5)
 			throws SeckillException,SeckillCloseException,RepeatKillException;
 }

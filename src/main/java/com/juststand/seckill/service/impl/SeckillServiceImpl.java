@@ -41,12 +41,10 @@ public class SeckillServiceImpl implements SeckillService {
 	public List<Seckill> getSeckills() {
 		return seckillDao.getAll(0, 5);
 	}
-
 	@Override
 	public Seckill getById(long seckillId) {
 		return seckillDao.getById(seckillId);
 	}
-
 	@Override
 	public Exposer exportSeckillUrl(long seckillId) {
 		Seckill seckill = seckillDao.getById(seckillId);
@@ -70,7 +68,6 @@ public class SeckillServiceImpl implements SeckillService {
 		String base = seckillId + "/" + salt;
 		return DigestUtils.md5DigestAsHex(base.getBytes());	
 	}
-
 	@Override
 	@Transactional
 	public SeckillExecution executeSeckill(long seckillId, long userPhone,
