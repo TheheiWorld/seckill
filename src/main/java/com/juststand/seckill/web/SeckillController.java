@@ -29,7 +29,7 @@ import com.juststand.seckill.service.SeckillService;
  * Created By juststand on 2017-3-22
  */
 @Controller
-@RequestMapping("/seckill") //模块
+@RequestMapping("/") //模块
 public class SeckillController {
 	
 	private final Logger log = LoggerFactory.getLogger(getClass());
@@ -40,6 +40,7 @@ public class SeckillController {
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public String list(Model model) {
 		List<Seckill> list = seckillService.getSeckills();
+		log.info(list.toString());
 		model.addAttribute("list", list);
 		return "list";// /WEB-INF/jsp/list.jsp
 	}
@@ -61,7 +62,7 @@ public class SeckillController {
 	@RequestMapping(value="/{seckillId}/exposer",method=RequestMethod.POST,
 			produces={"application/json;charset=UTF-8"})
 	@ResponseBody
-	public SeckillResult<Exposer> exposer(Long seckillId){
+	public SeckillResult<Exposer> exposer(@PathVariable("seckillId")Long seckillId){
 		SeckillResult<Exposer> seckillResult;
 		try {
 			Exposer exposer = seckillService.exportSeckillUrl(seckillId);
@@ -88,13 +89,13 @@ public class SeckillController {
 			seckillResult = new SeckillResult<SeckillExecution>(true, seckillExecution);
 		} catch (SeckillCloseException e) {
 			SeckillExecution seckillExecution = new SeckillExecution(seckillId, SeckillStateEnum.END);
-			seckillResult = new SeckillResult<SeckillExecution>(false, seckillExecution);
+			seckillResult = new SeckillResult<SeckillExecution>(true, seckillExecution);
 		} catch (RepeatKillException e) {
 			SeckillExecution seckillExecution = new SeckillExecution(seckillId, SeckillStateEnum.REPEAT_KILL);
-			seckillResult = new SeckillResult<SeckillExecution>(false, seckillExecution);
+			seckillResult = new SeckillResult<SeckillExecution>(true, seckillExecution);
 		} catch (SeckillException e) {
 			SeckillExecution seckillExecution = new SeckillExecution(seckillId, SeckillStateEnum.INNER_ERROR);
-			seckillResult = new SeckillResult<SeckillExecution>(false, seckillExecution);
+			seckillResult = new SeckillResult<SeckillExecution>(true, seckillExecution);
 		}
 		return seckillResult;
 	}

@@ -49,14 +49,8 @@
     <dependency>
     	<groupId>org.mybatis</groupId>
     	<artifactId>mybatis</artifactId>
-    	<version>3.3.1</version>
-    	<!-- <scope>runtime</scope> -->
+    	<version>3.3.1</version>	
     </dependency>
-    <!-- <dependency>
-    	<groupId>org.apache.ibatis</groupId>
-    	<artifactId>ibatis-core</artifactId>
-    	<version>3.0</version>
-    </dependency> -->
     <dependency>
     	<groupId>org.mybatis</groupId>
     	<artifactId>mybatis-spring</artifactId>
